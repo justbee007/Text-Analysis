@@ -7,17 +7,20 @@ sys.path.append(PROJECT_ROOT)
 from app import app
 
 # Test cases for word count API
-inputJsonList =[
+input_json_list = [
     {"text": "This is a test", "expected_word_count": 4},
     {"text": "Another test case", "expected_word_count": 3},
     {"text": "One more test", "expected_word_count": 3},
-    {"text": "", "expected_word_count": 0}
+    {"text": "", "expected_word_count": 0},
+    {"text": " One another    test  ", "expected_word_count": 3}
 ]
+client = app.test_client()
+
 
 # Test case for valid JSON input
-@pytest.mark.parametrize("data", inputJsonList)
+@pytest.mark.parametrize("data", input_json_list)
 def test_getWordCount(data):
-    client = app.test_client()
+
     response = client.post("/wordcount", json={"text": data["text"]})
     assert response.status_code == 200
     assert response.json == {"wordCount": data["expected_word_count"]}
@@ -25,7 +28,7 @@ def test_getWordCount(data):
 
 # Test case for invalid JSON input
 def test_invalid_word_count():
-    client = app.test_client()
+    # client = app.test_client()
     response = client.post("/wordcount", json={"text": 123})
     assert response.status_code == 400
     assert response.json == {"error": "Invalid input"}
@@ -33,7 +36,7 @@ def test_invalid_word_count():
 
 # Test case for empty JSON
 def test_invalid_json():
-    client = app.test_client()
+    # client = app.test_client()
     response = client.post("/wordcount", json={})
     assert response.status_code == 400
     assert response.json == {"error": "Invalid input"}
@@ -41,14 +44,14 @@ def test_invalid_json():
 
 # Test case for invalid HTTP method
 def test_invalid_http_method():
-    client = app.test_client()
+    # client = app.test_client()
     response = client.get("/wordcount")
     assert response.status_code == 405
 
 
 # Test case for No JSON data
 def test_missing_json_data():
-    client = app.test_client()
+    # client = app.test_client()
     response = client.post("/wordcount")
     assert response.status_code == 400
     assert response.json == {"error": "Invalid input"}
