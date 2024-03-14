@@ -1,9 +1,9 @@
+- [Step-by-Step Guide to Start Apis in local environment](#step-guide)
+- [Flask Apps and Circuit Breaker Implementation](#circuit-implementation)
 
-  
+## Step-by-Step Guide to Start Apis in local environment <a name="step-guide"></a>
 
-## Step-by-Step Guide to Start Apis in local environment
-
-  
+  **Note:** Python 3.8 is required for the project as the Pybreaker library used in the project requires it.
 
 ### 1. Clone the Repository:
 
@@ -160,3 +160,28 @@ Replace `<service_name>` with the name of the service you want to delete.
   
 
 If the deletion is successful, you will receive a 204 No Content response.
+
+# Flask Apps and Circuit Breaker Implementation <a name="circuit-implementation"></a>
+
+I have 4 Flask apps inside a folder:
+
+1. central-api
+2. entity-recognition-api
+3. sentiment-analysis-api
+4. word-count-api
+
+The central API is responsible for registering the other three services. 
+
+## Circuit Breaker Implementation
+
+I have implemented a circuit breaker in the inter-service communication between the central API and the other three services. 
+
+The circuit breaker pattern is a design pattern used in modern software development to prevent cascading failures in distributed systems. It is described in detail by Martin Fowler [here](https://martinfowler.com/bliki/CircuitBreaker.html) and also another read to understand the circuit breaker pattern [here](https://microservices.io/patterns/reliability/circuit-breaker.html).
+
+For the implementation of the circuit breaker in Python, I have used the Pybreaker library. 
+
+### Pybreaker Library
+
+Pybreaker is a Python implementation of the circuit breaker pattern. It provides a simple interface to use circuit breakers in Python applications. 
+
+You can find more information about the Pybreaker library on its [PyPI page](https://pypi.org/project/pybreaker/).
