@@ -1,12 +1,12 @@
 import pytest
-import os,pytest
+import os, pytest
 import sys
 from flask import Response
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 sys.path.append(PROJECT_ROOT)
 
-from app.services.services import build_response,json_validator
+from app.services.services import build_response, json_validator
 
 
 @pytest.mark.parametrize(
@@ -69,9 +69,8 @@ def test_build_response_invalid_status(status):
         build_response(status)
 
 
-
-
 # Valid input and expected output
+
 
 @pytest.mark.parametrize(
     "json_data",
@@ -84,7 +83,8 @@ def test_build_response_invalid_status(status):
 # Check if the json_validator function returns True when the input is valid
 def test_json_validator(json_data):
     assert json_validator(json_data) == True
-        
+
+
 # Invalid input and expected error
 @pytest.mark.parametrize(
     "json_data, expected_error",
@@ -95,7 +95,6 @@ def test_json_validator(json_data):
         ({"service": 123, "text": "Hello World"}, "Service name must be a string"),
         (123, "json_data must be a dictionary"),
         ({}, "json_data must not be empty"),
-
     ],
 )
 

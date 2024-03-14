@@ -3,23 +3,29 @@ from flask import request
 from app.services.service_manager import ServiceManager
 from .services.services import build_response, json_validator
 from pybreaker import CircuitBreakerError
+
+# Create an instance of the ServiceManager class
 service_manager = ServiceManager()
 
-
-
+# This route returns a list of all services registered with the service manager
 @app.route("/services", methods=["GET"])
 def get_all_services():
     try:
         # Return a list of all services
         response = None
-        response = build_response(200, service_manager.get_all_services())
+
+        if not service_manager.get_all_services():
+            response = build_response(404, {"message": "No services registered"})
+        else:
+            response = build_response(200, service_manager.get_all_services())
     except Exception as e:
-        response = build_response(500, {"message": "Internal server error"})        
+        response = build_response(500, {"message": "Internal server error"})
     return response
-    
- # Register a new service
+
+
+# Register a new service with the service manager
 @app.route("/services", methods=["POST"])
-def register_services(): 
+def register_services():
     try:
         if not request.json:  # Check if the request body is a JSON object
             response = build_response(
@@ -45,10 +51,10 @@ def register_services():
     return response
 
 
-# Delete a service
+# Delete a service from the service manager
 @app.route("/services", methods=["DELETE"])
-def delete_service() :   
-    try:    # Delete a service
+def delete_service():
+    try:  # Delete a service
         if request.method == "DELETE":
             if not request.json:
                 response = build_response(
@@ -73,7 +79,8 @@ def delete_service() :
         response = build_response(500, {"message": "Internal server error"})
     return response
 
-# Analyze text using differnt services 
+
+# Analyze text using differnt services
 @app.route("/analyze", methods=["POST"])
 def analyze_text():
     response = None
@@ -108,7 +115,9 @@ def analyze_text():
                 else:
                     response = build_response(200, json_response)
             except CircuitBreakerError as e:
-                response = build_response(503, {"message": str(e)})  # Service is down error is returned to show that the called service is down.
+                response = build_response(
+                    503, {"message": str(e)}
+                )  # Service is down error is returned to showcase that the called service is down.
     except Exception as e:
         print(e)
         response = build_response(500, {"message": "Internal server error"})

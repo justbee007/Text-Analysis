@@ -119,9 +119,8 @@ class ServiceManager:
         """
 
         # The _api_call function is defined within the call_api function.
-        @self.circuit_breakers[
-            service_name
-        ]  # This decorator uses the circuit breaker behavior to handle the service being down.
+        @self.circuit_breakers[service_name]  
+        # This decorator uses the circuit breaker behavior to handle the service being down.
         def _api_call(service_name, text):
             """
             This function makes an API call to a service. It takes the following parameters:

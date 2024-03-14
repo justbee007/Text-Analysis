@@ -12,7 +12,7 @@ input_json_list = [
     {"text": "Another test case", "expected_word_count": 3},
     {"text": "One more test", "expected_word_count": 3},
     {"text": "", "expected_word_count": 0},
-    {"text": " One another    test  ", "expected_word_count": 3}
+    {"text": " One another    test  ", "expected_word_count": 3},
 ]
 client = app.test_client()
 
