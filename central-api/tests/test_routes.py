@@ -58,6 +58,13 @@ invalid_input_list = [
             "message": "Request body must contain name and url",
         },
     },
+    {
+        "input":{"name":"","url":"http://127.0.1/wordcount"},
+        "response": {
+            "status_code": 400,
+            "message": "Request body must contain name and url",
+        },
+    }
 ]
 
 
@@ -86,7 +93,7 @@ def test_delete_service(client):
         "/services", json={"name": "sentiment analysis"}
     )  # Since we are using a single client for all tests, the service is already registered from the previous test
     assert response.status_code == 204
-    response = client.delete("/services", json={"name": "sentiment analysis"})
+    response = client.delete("/services", json={"name": "sentiment analysis"}) # Try to delete same service again
     assert response.status_code == 404
 
 

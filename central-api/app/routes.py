@@ -34,7 +34,7 @@ def register_services():
             )
             return response
         data = request.json
-        if "name" not in data or "url" not in data:
+        if "name" not in data or not data["name"] or "url" not in data or not data["url"]:
             response = build_response(
                 400, {"message": "Request body must contain name and url"}
             )

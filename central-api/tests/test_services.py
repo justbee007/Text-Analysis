@@ -99,7 +99,7 @@ def test_json_validator(json_data):
 )
 
 # Check if the json_validator function raises a ValueError when the input is invalid
-def test_json_validator(json_data, expected_error):
+def test_invalid_input_json_validator(json_data, expected_error):
     with pytest.raises(Exception) as e:
         json_validator(json_data)
     assert str(e.value) == expected_error

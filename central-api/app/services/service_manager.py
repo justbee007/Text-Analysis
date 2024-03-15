@@ -126,8 +126,7 @@ class ServiceManager:
             """
             This function makes an API call to a service. It takes the following parameters:
             - service_name: The name of the service
-            - text: The text to send to the service
-            """
+            - text: The text to send to the service"""
             service_name = service_name.lower()
             url = self.registered_services[service_name]["url"]
             json_data = json.dumps({"text": text})
