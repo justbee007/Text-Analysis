@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  central-api:
+    image: justbee007/central-api:latest
+    ports:
+      - "5008:5008"
+    networks:
+      - custom-network
+
+  word-count-api:
+    image: justbee007/word-count-api:latest
+    ports:
+      - "5010:5010"
+    networks:
+      - custom-network
+    depends_on:
+      - central-api
+
+  entity-recognition-api:
+    image: justbee007/entity-recoginition-api:latest
+    ports:
+      - "5009:5009"
+    networks:
+      - custom-network
+    depends_on:
+      - central-api
+
+  sentiment-analysis-api:
+    image: justbee007/sentiment-analysis-api:latest
+    ports:
+      - "5001:5005"
+    networks:
+      - custom-network
+    depends_on:
+      - central-api
+
+networks:
+  custom-network:
+    driver: bridge
