@@ -1,5 +1,5 @@
 - [Step-by-Step Guide to Start Apis in local environment](#step-guide)
-- [Flask Apps and Circuit Breaker Implementation](#circuit-implementation)
+- [Flask apis and Circuit Breaker Implementation](#circuit-implementation)
 - [Step by step guide to see circuit breaker in action](#circuit-breaker-in-action) 
 
 ## Step-by-Step Guide to Start Apis in local environment <a name="step-guide"></a>
@@ -76,7 +76,7 @@ Once all  services  are  running  as  expected  follow  the  below  steps  to
 
 ```
 
-POST http://127.0.0.1:5003/services
+POST [http://127.0.0.1:5008/services]
 
 ```
 
@@ -86,7 +86,7 @@ Include the following JSON payload in the request body:
 
   
 
-```json
+```
 
 {
 
@@ -114,7 +114,7 @@ To retrieve details of all registered services, send a GET request to the endpoi
 
 ```
 
-GET http://127.0.0.1:5009/services
+GET [http://127.0.0.1:5008/services]
 
 ```
 
@@ -134,7 +134,7 @@ To delete a registered service, send a POST request with the HTTP method set to 
 
 ```
 
-POST http://127.0.0.1:5009/services
+DELETE [http://127.0.0.1:5008/services]
 
 ```
 
@@ -144,7 +144,8 @@ Include the following JSON payload in the request body:
 
   
 
-```json
+```
+json
 
 {
 
@@ -152,14 +153,11 @@ Include the following JSON payload in the request body:
 
 }
 
-```
-
-  
+```  
 
 Replace `<service_name>` with the name of the service you want to delete.
 
   
-
 If the deletion is successful, you will receive a 204 No Content response.
 
 # Flask Apps and Circuit Breaker Implementation <a name="circuit-implementation"></a>
@@ -197,10 +195,12 @@ To see the circuit breaker pattern in action with the Central API, follow these 
 
 3. **Communicate with the Service via Central API**: Attempt to communicate with the stopped service using the `/analyze` route of the Central API. Send a sample text to analyze.
 
-4. **Observe Circuit Breaker Behavior**: Upon attempting to call the stopped service, the Central API will respond with a status 503 indicating that the service is unavailable.  The first time the api is hit {
+4. **Observe Circuit Breaker Behavior**: Upon attempting to call the stopped service, the Central API will respond with a status 503 indicating that the service is unavailable.  The first time the api is hit
+{
 "message": "Failures threshold reached, circuit breaker opened"
-}. 
-When you try to hit the api again you get a response of 503 with the following message {
+}  
+When you try to hit the api again you get a response of 503 with the following message
+{
 "message": "Timeout not elapsed yet, circuit breaker still open"
 }
 Even if the service in this example `entity-recognition-api` is started again the circuit breaker prevents the central-api from accessing the `entity-recognition-api`  for a period of 10 seconds after which when you try to access the api the circuit breaker tries to make an api call to the `entity-recognition-api`. 
