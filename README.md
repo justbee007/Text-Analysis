@@ -2,6 +2,7 @@
 - [Flask apis and Circuit Breaker Implementation](#circuit-implementation)
 - [Step by step guide to see circuit breaker in action](#circuit-breaker-in-action) 
 - [Collection all Apis along with sample JSON input and ouput used in the project](https://documenter.getpostman.com/view/32183113/2sA2xmUqFn)
+- [Running Tests inside each api using Pytest](#tests-using-pytest)
 ## Step-by-Step Guide to Start Apis in local environment <a name="step-guide"></a>
 
   **Note:** Python 3.8 is required for the project as the Pybreaker library used in the project requires it.
@@ -244,3 +245,33 @@ To use the `ServiceManager` class in your Python application, follow these steps
 4. Handle service failures gracefully using the circuit breaker pattern implemented in the `call_api` method.
 
 By leveraging the `ServiceManager` class, you can effectively manage services within your microservices architecture and ensure fault tolerance and reliability in your distributed systems.
+
+## Running Tests using Pytest<a name="tests-using-pytest"></a>
+
+To run the tests for all Apis routes and services, follow these steps:
+
+1. **Clone the Repository**: If you haven't already, clone the repository containing the project code.
+
+2. **Install Dependencies**: Navigate to the project root directory and install the necessary dependencies:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3. **Set Up Environment**: Ensure that you have set up a virtual environment for the project. You can create and activate a virtual environment using the following commands:
+
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate
+    ```
+
+4. **Run the Tests**: Once the environment is activated, navigate to the `tests` folder and run the tests using pytest:
+
+    ```bash
+    cd /path/to/<api-folder>/tests
+    pytest -vv
+    ```
+
+    This command will execute all the tests in the `tests` folder and provide verbose output (`-vv`) for better visibility of the test results.
+
+5. **View Test Results**: After running the tests, pytest will display the results in the terminal. You'll see information about which tests passed and which ones failed, along with any relevant error messages.
