@@ -142,7 +142,6 @@ Include the following JSON payload in the request body:
   
 
 ```
-json
 
 {
 
