@@ -59,9 +59,16 @@ python app.py
 # Now all the apis are running
 
   
+```
+Once all  services  are  running the end points will be available at the following URLS
+1. **Entity Recognition API**
+   - Localhost URL: [http://127.0.0.1:5009/entityrecognition(http://127.0.0.1:5009/entityrecognition)
 
-Once all  services  are  running  as  expected  follow  the  below  steps  to
+2. **Sentiment Analysis API**
+   - Localhost URL: [http://127.0.0.1:5010/wordcount](http://127.0.0.1:5010/wordcount)
 
+3. **Word Count API**
+   - Localhost URL: [http://127.0.0.1:5009/entityrecognition](http://127.0.0.1:5009/entityrecognition)
 ```
 ## 2. Service Registration 
 
