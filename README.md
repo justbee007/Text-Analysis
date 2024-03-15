@@ -146,8 +146,8 @@ I have 4 Flask apps inside a folder:
 
 1. [central-api](/central-api)
 2. [entity-recognition-api](/entity-recoginition-api)
-3. [sentiment-analysis-api] (/sentiment-analysis-api)
-4. [word-count-api] (/wordcount-api)
+3. [sentiment-analysis-api](/sentiment-analysis-api)
+4. [word-count-api](/wordcount-api)
 
 The central API is responsible for registering the other three services. 
 
