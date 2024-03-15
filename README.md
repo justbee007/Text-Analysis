@@ -48,7 +48,7 @@ pip install  -r  requirements.txt
 
 # Start the central-api app
 
-python app.py &
+python app.py
 
   
   
