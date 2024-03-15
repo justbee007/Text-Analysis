@@ -171,7 +171,7 @@ Include the following JSON payload in the request body:
 Replace `<service_name>` with the name of the service you want to delete.
 
 The response will be a JSON object containing the response of the the text analysis service that was called.
-
+```
 # Flask Apis and Circuit Breaker Implementation <a name="circuit-implementation"></a>
 
 I have 4 Flask apps inside a folder:
@@ -196,6 +196,7 @@ For the implementation of the circuit breaker in Python, I have used the Pybreak
 Pybreaker is a Python implementation of the circuit breaker pattern. It provides a simple interface to use circuit breakers in Python applications. 
 
 You can find more information about the Pybreaker library on its [PyPI page](https://pypi.org/project/pybreaker/).
+
 
 # Simulate Circuit Breaker with the Central API <a name="circuit-breaker-in-action"></a>
 
