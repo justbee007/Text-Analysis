@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request, Response
 from app import app
-from .services import calculate_word_count, json_validation
+from .word_count_services import calculate_word_count, json_validation
 import json
 
 

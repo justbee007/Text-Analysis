@@ -21,7 +21,8 @@ def json_validation(json_data):
     """
     Function to validate the input JSON
     :param json_data: The input JSON
-    :return: True if the input JSON is valid, False otherwise"""
+    :return: True if the input JSON is valid, False otherwise
+    """
     if not json_data:
         return False
     if "text" not in json_data:

@@ -1,9 +1,9 @@
 from app import app
 from flask import request
 
-from app.services import build_response,json_validation
+from app.entity_recoginition_services import build_response,json_validation
 
-
+# Route for entity recognition
 @app.route("/entityrecognition", methods=["POST"])
 def get_entity_recognition():
     response = None

@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request, Response
 from app import app
-from .services import sentiment_analysis, json_validation, check_input_type
+from .sentiment_analysis_services import sentiment_analysis, json_validation, check_input_type
 import json
 
 

@@ -3,6 +3,11 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 # Function used to validate the input JSON
 def json_validation(json_data):
+    '''
+    This function checks if the input JSON is valid
+    :param json_data: JSON input
+    Function returns True if the input JSON is valid
+    '''
     if type(json_data) == str:
         return False
     if not json_data:
@@ -16,6 +21,11 @@ def json_validation(json_data):
 
 # Function used to analyze the sentiment of the input text
 def sentiment_analysis(text):
+    '''
+    This function checks the sentiment of the input text
+    :param text: input text
+    Function returns the sentiment of the input text
+    '''
     analyzer = SentimentIntensityAnalyzer()
     scores = analyzer.polarity_scores(text)
     compound_score = scores["compound"]
@@ -26,8 +36,12 @@ def sentiment_analysis(text):
     else:
         return "neutral"
 
-
+# Function used to check the input type
 def check_input_type(input_data):
+    '''
+    This function checks the type of the input data
+    :param input_data: input data
+    Function returns True if the input data is a string'''
     if not type(input_data) is str:
         return False
     return True

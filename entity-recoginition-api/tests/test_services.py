@@ -5,7 +5,7 @@ from flask import Response
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 sys.path.append(PROJECT_ROOT)
-from app.services import build_response, json_validation
+from app.entity_recoginition_services import build_response, json_validation
 
 @pytest.mark.parametrize(
     "status, message, expected_response",

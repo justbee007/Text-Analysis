@@ -117,15 +117,17 @@ class ServiceManager:
         - text: The text to send to the service
         - The function makes an API call to the service using the requests library and returns the results.
         """
-
+        circuit_breaker_decorator = self.get_circuit_breaker(service_name)
         # The _api_call function is defined within the call_api function.
-        @self.circuit_breakers[service_name]  
+        # @self.circuit_breakers[service_name]  
         # This decorator uses the circuit breaker behavior to handle the service being down.
+        @circuit_breaker_decorator
         def _api_call(service_name, text):
             """
             This function makes an API call to a service. It takes the following parameters:
             - service_name: The name of the service
-            - text: The text to send to the service"""
+            - text: The text to send to the service
+            """
             service_name = service_name.lower()
             url = self.registered_services[service_name]["url"]
             json_data = json.dumps({"text": text})

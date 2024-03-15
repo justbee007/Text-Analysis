@@ -6,7 +6,7 @@ from flask import Response
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 sys.path.append(PROJECT_ROOT)
 
-from app.services.services import build_response, json_validator
+from app.services.central_api_services import build_response, json_validator
 
 
 @pytest.mark.parametrize(

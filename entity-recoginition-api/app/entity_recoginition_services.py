@@ -1,6 +1,12 @@
 from flask import Response
 import json
 def build_response(status:int,message:dict=None):
+    '''
+    Function to build the response
+    :param status: The HTTP status code
+    :param message: The response message
+    :return: The response object
+    '''
     try:
         if not isinstance(status, int):
             raise TypeError("status must be an integer")

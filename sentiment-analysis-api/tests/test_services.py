@@ -5,7 +5,7 @@ import sys  # Add the path to the project root directory to the system path
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 sys.path.append(PROJECT_ROOT)
 from app import app  # Import the Flask application
-from app.services import json_validation
+from app.sentiment_analysis_services import json_validation
 
 
 # Create a test client using the Flask application context
