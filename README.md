@@ -1,11 +1,13 @@
 - [Step-by-Step Guide to Start Apis in local environment](#step-guide)
 - [Flask apis and Circuit Breaker Implementation](#circuit-implementation)
 - [Step by step guide to see circuit breaker in action](#circuit-breaker-in-action) 
-- [Collection all Apis along with sample JSON input and ouput used in the project](https://documenter.getpostman.com/view/32183113/2sA2xmUqFn)
+- [Documentation of all Apis used in this project](https://documenter.getpostman.com/view/32183113/2sA2xmUqFn)
 - [Running Unit Tests inside each api using Pytest](#tests-using-pytest)
+- [Running the APIS using Docker](#Running-Using-Docker)
 ## Step-by-Step Guide to Start Apis in local environment <a name="step-guide"></a>
 
   **Note:** Python 3.8 is required for the project as the Pybreaker library used in the project requires it.
+  **Note:** If Python 3.8 is unavailable in your system considering running the app using Docker. Here is the guide to run the application using Docker [Guide to start Apis using Docker](#Running-Using-Docker)
 
 ### 1. Clone the Repository:
 
@@ -282,3 +284,77 @@ To run the tests for all Apis routes and services, follow these steps:
     This command will execute all the tests in the `tests` folder and provide verbose output (`-vv`) for better visibility of the test results.
 
 5. **View Test Results**: After running the tests, pytest will display the results in the terminal. You'll see information about which tests passed and which ones failed, along with any relevant error messages.
+
+## Run the Apis using Docker<a name="Running Using Docker"></a>
+Clone the repository. Locate the [docker-compose file](/central-api/docker-compose.yaml) file in the folder.
+Before starting the services, it's important to ensure that the required ports are available and not being used by any other processes. Look at a code snippet from the docker- compose file below. 
+```bash
+sentiment-analysis-api:
+image: justbee007/sentiment-analysis-api:latest
+ports:
+- "5001:5005" Ensure that Port 5001 is available on your machine. Else change it to another port 
+networks:
+- custom-network
+depends_on:
+- central-api
+```
+- Similarly check whether all the ports in the docker-compose file are available
+- Make sure you have [Docker](https://www.docker.com/products/docker-desktop/) is installed on your system.
+
+***How to Start up the docker container*** 
+1.  Open your terminal or command prompt.
+2.  Navigate to the directory where your [docker-compose file](/central-api/docker-compose.yaml) file is located.
+3.  Run the following command to start all services defined in the `docker-compose.yaml` file:
+	```
+	docker-compose up -d
+	```
+The Api End Points to access the following services through docker is 
+
+1. entity-recognition-api - http://entity-recognition-api:5009/entityrecognition
+2. sentiment-analysis-api - http://word-count-api:5010/wordcount
+3. word-count-api - http://entity-recognition-api:5009/entityrecognition
+
+###  Service Registration
+To register a service use the below end point through a tool like Postman
+POST [http://127.0.0.1:5008/services]
+
+```
+Include the following JSON payload in the request body:
+JSON
+{
+
+"url": "http://<service_url>",
+
+"name": "<service_name>"
+
+}
+Example:
+JSON
+{
+
+"url": "http://entity-recognition-api:5009/entityrecognition",
+
+"name": "entity recognition"
+
+}
+```
+
+Replace `<url>` with the URL of the service and `<service_name>` with the name of the service.
+
+
+To see **Circuit Breaker pattern** in action run a command 
+```bash
+Run the command ``` docker ps  ```
+
+The above command lists a list of all containers. Locate the container ID and run the command 
+``` docker stop <container_id> ``` 
+- Now when trying to access the respective Api text analysis service through central service  you get an error along with HTTP STATUS CODE 503
+Service Unavailable 
+{
+"message": "Failures threshold reached, circuit breaker opened"
+}  
+When you try to hit the api again you get a response of 503 with the following message
+{
+"message": "Timeout not elapsed yet, circuit breaker still open"
+}
+```
