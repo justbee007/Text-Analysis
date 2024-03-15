@@ -61,17 +61,6 @@ python app.py
 
 Once all  services  are  running  as  expected  follow  the  below  steps  to
 
-  
-  
-  
-
-
-
-  
-
-  
-  
-
 ```
 ## 2. Service Registration 
 
@@ -81,10 +70,6 @@ POST [http://127.0.0.1:5008/services]
 ```
 Include the following JSON payload in the request body:
 ```
-
-  
-
-
 
 {
 
@@ -155,14 +140,14 @@ Replace `<service_name>` with the name of the service you want to delete.
   
 If the deletion is successful, you will receive a 204 No Content response.
 
-# Flask Apps and Circuit Breaker Implementation <a name="circuit-implementation"></a>
+# Flask Apis and Circuit Breaker Implementation <a name="circuit-implementation"></a>
 
 I have 4 Flask apps inside a folder:
 
-1. central-api
-2. entity-recognition-api
-3. sentiment-analysis-api
-4. word-count-api
+1. [central-api](/central-api)
+2. [entity-recognition-api](/entity-recoginition-api)
+3. [sentiment-analysis-api] (/sentiment-analysis-api)
+4. [word-count-api] (/wordcount-api)
 
 The central API is responsible for registering the other three services. 
 
