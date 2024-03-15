@@ -171,7 +171,7 @@ I have 4 Flask apps inside a folder:
 3. [sentiment-analysis-api](/sentiment-analysis-api)
 4. [word-count-api](/wordcount-api)
 
-The central API is responsible for registering the other three services. 
+The central API is responsible for registering the other three services along with communicating with the regsitered services.
 
 ## Circuit Breaker Implementation
 
