@@ -65,26 +65,26 @@ Once all  services  are  running  as  expected  follow  the  below  steps  to
   
   
 
-## 2. Service Registration
+
 
   
-
-#### To register a new service, send a POST request to the endpoint:
 
   
   
 
 ```
+## 2. Service Registration 
 
+To register a service
+```
 POST [http://127.0.0.1:5008/services]
-
+```
 ```
 
   
 
 Include the following JSON payload in the request body:
 
-JSON
 {
 
 "url": "http://<service_url>",
@@ -94,8 +94,6 @@ JSON
 }
 
 ```
-
-  
 
 Replace `<service_url>` with the URL of the service and `<service_name>` with the name of the service.
 
