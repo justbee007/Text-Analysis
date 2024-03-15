@@ -286,7 +286,7 @@ To run the tests for all Apis routes and services, follow these steps:
 5. **View Test Results**: After running the tests, pytest will display the results in the terminal. You'll see information about which tests passed and which ones failed, along with any relevant error messages.
 ```
 
-## Run the Apis using Docker<a name="Running Using Docker"></a>
+## Run the Apis using Docker <a name="Running Using Docker"></a>
 Clone the repository. Locate the [docker-compose file](/central-api/docker-compose.yaml) file in the folder.
 Before starting the services, it's important to ensure that the required ports are available and not being used by any other processes. Look at a code snippet from the docker- compose file below. 
 ```bash
