@@ -187,7 +187,7 @@ Pybreaker is a Python implementation of the circuit breaker pattern. It provides
 
 You can find more information about the Pybreaker library on its [PyPI page](https://pypi.org/project/pybreaker/).
 
-# Simulate Circuit Breaker with the Central API <a name="#circuit-breaker-in-action"></a>
+# Simulate Circuit Breaker with the Central API <a name="circuit-breaker-in-action"></a>
 
 To see the circuit breaker pattern in action with the Central API, follow these steps:
 
