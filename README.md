@@ -3,7 +3,7 @@
 - [Step by step guide to see circuit breaker in action](#circuit-breaker-in-action) 
 - [Documentation of all Apis used in this project](https://documenter.getpostman.com/view/32183113/2sA2xmUqFn)
 - [Running Unit Tests inside each api using Pytest](#tests-using-pytest)
-- [Running the APIS using Docker](#Running-Using-Docker)
+- [Running the APIS using Docker](#run-the-apis-using-docker-)
 ## Step-by-Step Guide to Start Apis in local environment <a name="step-guide"></a>
 
   **Note:** Python 3.8 is required for the project as the Pybreaker library used in the project requires it.
