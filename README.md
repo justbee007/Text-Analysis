@@ -85,7 +85,7 @@ Replace `<service_url>` with the URL of the service and `<service_name>` with th
 
   
 
-## Get All Registered Services
+## 3. Get All Registered Services
 
   
 
@@ -105,7 +105,7 @@ The response will be a JSON object containing details of all registered services
 
   
 
-## Delete a Registered Service
+## 4. Delete a Registered Service
 
   
 
@@ -139,6 +139,28 @@ Replace `<service_name>` with the name of the service you want to delete.
 
   
 If the deletion is successful, you will receive a 204 No Content response.
+
+## 5. Get Text Analysis  
+
+To retrieve a text analysis response, send a post request along with the text analysis service name along with the text that needs to be analysed
+
+```
+
+POST [http://127.0.0.1:5008/analyze]
+
+```
+Include the following JSON payload in the request body:
+
+```
+{
+"service": "<service_name>",
+"text": "Apple was founded by Steve jobs"
+}
+
+```
+Replace `<service_name>` with the name of the service you want to delete.
+
+The response will be a JSON object containing the response of the the text analysis service that was called.
 
 # Flask Apis and Circuit Breaker Implementation <a name="circuit-implementation"></a>
 
