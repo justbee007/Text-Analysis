@@ -1,7 +1,7 @@
 - [Step-by-Step Guide to Start Apis in local environment](#step-guide)
 - [Flask apis and Circuit Breaker Implementation](#circuit-implementation)
 - [Step by step guide to see circuit breaker in action](#circuit-breaker-in-action) 
-
+- [Collection all Apis along with sample JSON input and ouput used in the project](https://documenter.getpostman.com/view/32183113/2sA2xmUqFn)
 ## Step-by-Step Guide to Start Apis in local environment <a name="step-guide"></a>
 
   **Note:** Python 3.8 is required for the project as the Pybreaker library used in the project requires it.
